@@ -1,0 +1,76 @@
+#include "std_lib_facilities.h"
+int main()
+{
+	double number = 0, smallest = 0, largest = 0, convert = 0, smlconv = 0, lrgconv = 0;
+	string unit;
+	const double m_to_cm = 100;
+	const double in_to_cm = 2.54;
+	const double ft_to_cm = 12;
+	const double cm_to_m = 0.01;
+	
+	vector<double> distances;
+	cout << "Please enter a number and a measurement unit (cm, m, in, ft)!" << endl;
+	while (cin >> number >> unit)
+	{
+		if (unit != "cm" && unit != "ft" && unit != "in" && unit != "m")
+		{
+			cout << "This is an invalid unit. Please enter a number and a valid unit!" << endl;
+		}
+		else
+		{
+			cout << "You entered this: " << number << unit << endl;
+			if (unit == "m")
+			{
+				convert = number;				
+			}
+			else if (unit == "in")
+			{
+				convert = number * m_to_cm;
+			}
+			else if (unit == "ft")
+			{
+				convert = (number * ft_to_cm) * in_to_cm;
+			}
+			else if (unit == "cm")
+			{
+				convert = number * cm_to_m;
+			}
+			
+			distances.push_back(convert);
+			if (largest == 0 && smallest == 0)
+			{
+				largest = number;
+				smallest = number;
+				cout << "The smallest so far: " << smallest << unit << endl;
+				cout << "The largest so far: " << largest << unit <<endl;
+			}
+			else if (convert > smallest)
+			{
+				largest = number;
+				lrgconv = convert;
+				cout << "The smallest so far: " << smallest << unit << endl;
+				cout << "The largest so far: " << largest << unit << endl; 
+			}
+			else if (convert < lrgconv || convert < smlconv)
+			{
+				smallest = number;
+				smlconv = convert;
+				lrgconv = convert;
+				cout << "The largest number so far is: " << largest << endl;
+	    		cout << "The smallest number so far is: " << smallest << endl;
+			} 
+		}
+	}
+	
+	sort(distances);
+
+	double sum = 0;
+	
+	for(double distance : distances)
+	{
+		sum += distance;
+		cout << distance << endl;
+	}
+	cout << "The sum of the values: " << sum << endl;
+return 0;
+}
