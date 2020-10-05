@@ -5,7 +5,7 @@ int main()
 	string unit;
 	const double m_to_cm = 100;
 	const double in_to_cm = 2.54;
-	const double ft_to_cm = 12;
+	const double ft_to_in = 12;
 	const double cm_to_m = 0.01;
 	
 	vector<double> distances;
@@ -19,21 +19,22 @@ int main()
 		else
 		{
 			cout << "You entered this: " << number << unit << endl;
+			
 			if (unit == "m")
 			{
-				convert = number;				
+			convert = number;
 			}
 			else if (unit == "in")
 			{
-				convert = number * m_to_cm;
+			convert = (number * in_to_cm) * cm_to_m;
 			}
 			else if (unit == "ft")
 			{
-				convert = (number * ft_to_cm) * in_to_cm;
+			convert = (number * ft_to_in) * in_to_cm * cm_to_m;
 			}
 			else if (unit == "cm")
 			{
-				convert = number * cm_to_m;
+			convert = number * cm_to_m;
 			}
 			
 			distances.push_back(convert);
