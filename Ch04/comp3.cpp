@@ -52,14 +52,6 @@ int main()
 				cout << "The smallest so far: " << smallest << unit << endl;
 				cout << "The largest so far: " << largest << unit << endl; 
 			}
-			else if (convert < lrgconv || convert < smlconv)
-			{
-				smallest = number;
-				smlconv = convert;
-				lrgconv = convert;
-				cout << "The largest number so far is: " << largest << endl;
-	    		cout << "The smallest number so far is: " << smallest << endl;
-			} 
 		}
 	}
 	
@@ -73,5 +65,7 @@ int main()
 		cout << distance << endl;
 	}
 	cout << "The sum of the values: " << sum << endl;
+	cout << "The smallest value: " << distances[0] << endl;
+	cout << "The largest value: " << distances[distances.size()-1] << endl;
 return 0;
 }
